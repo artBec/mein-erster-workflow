@@ -2,6 +2,7 @@ name: Hallo Welt
 
 on:
   push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       name:
@@ -14,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Begrüßung
-        run: echo "Hallo, ${{ inputs.name }}!"
+        run: echo "Hallo, ${{ inputs.name || 'Welt' }}!"
 
       - name: Datum und Uhrzeit
         run: date
@@ -33,3 +34,6 @@ jobs:
           docker --version
           python3 --version
           node --version
+
+      - name: Absichtlich falsch
+        run: dieser-befehl-existiert-nicht    
