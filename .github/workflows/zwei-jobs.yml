@@ -1,0 +1,19 @@
+name: zwei-jobs 
+
+on:
+  push:
+    workflow_dispatch:
+
+jobs:
+  vorbereiten:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Begrüßung
+        run: echo "Begrüßung"
+
+  arbeiten:
+    runs-on: ubuntu-latest
+    needs: vorbereiten
+    steps:
+      - name: zweite meldung
+        run: echo "erst nach vorbereiten"
